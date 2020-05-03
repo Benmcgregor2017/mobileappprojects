@@ -797,11 +797,11 @@ id alertTitle
 id always
 id async
 id auto
+id back
 id barrier
 id beginning
 id blocking
 id bottom
-id button
 id buttonPanel
 id center_vertical
 id chains
@@ -876,7 +876,7 @@ id poster
 id progress_circular
 id progress_horizontal
 id radio
-id recyclerv_view
+id recyclerv_view_fav
 id register
 id right
 id right_icon

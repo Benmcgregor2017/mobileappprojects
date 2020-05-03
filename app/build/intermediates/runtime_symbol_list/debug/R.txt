@@ -796,11 +796,11 @@ int id alertTitle 0x7f07003f
 int id always 0x7f070040
 int id async 0x7f070041
 int id auto 0x7f070042
-int id barrier 0x7f070043
-int id beginning 0x7f070044
-int id blocking 0x7f070045
-int id bottom 0x7f070046
-int id button 0x7f070047
+int id back 0x7f070043
+int id barrier 0x7f070044
+int id beginning 0x7f070045
+int id blocking 0x7f070046
+int id bottom 0x7f070047
 int id buttonPanel 0x7f070048
 int id center_vertical 0x7f070049
 int id chains 0x7f07004a
@@ -875,7 +875,7 @@ int id poster 0x7f07008e
 int id progress_circular 0x7f07008f
 int id progress_horizontal 0x7f070090
 int id radio 0x7f070091
-int id recyclerv_view 0x7f070092
+int id recyclerv_view_fav 0x7f070092
 int id register 0x7f070093
 int id right 0x7f070094
 int id right_icon 0x7f070095
