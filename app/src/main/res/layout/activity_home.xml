@@ -46,7 +46,7 @@
         android:layout_marginBottom="9dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:text="Enter Title" />
 
     <Button
         android:id="@+id/submit"

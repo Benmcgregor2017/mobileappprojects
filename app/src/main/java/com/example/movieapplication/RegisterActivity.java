@@ -1,5 +1,6 @@
 package com.example.movieapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,11 +18,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends Activity {
 
 
     EditText email, password;
-    Button create;
+    Button create,cancel;
     private FirebaseAuth mAuth;
 
     @Override
@@ -34,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         email = (EditText)findViewById(R.id.email);
         password = (EditText)findViewById(R.id.password);
         create = (Button)findViewById((R.id.create_acc));
+        cancel = (Button)findViewById((R.id.cancel));
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,12 +65,19 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        cancel.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void updateUI(FirebaseUser user){
         if(user != null){
             Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
-            intent.putExtra("UserID",email.getText().toString());
             startActivity(intent);
         }else{
 

@@ -17,4 +17,27 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="215dp"
+        android:layout_height="52dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:autoText="false"
+        android:gravity="center"
+        android:text="Your Favorites"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="211dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginBottom="29dp"
+        android:text="Back" />
+
 </RelativeLayout>

@@ -4,6 +4,18 @@ public class Favorites {
     private String email;
     private String title;
     private String poster;
+    private String email_title;
+
+
+    public String getEmail_title() {
+        return email_title;
+    }
+
+    public void setEmail_title(String email_title) {
+        this.email_title = email_title;
+    }
+
+
 
     public Favorites() {
     }

@@ -1,10 +1,15 @@
 package com.example.movieapplication;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +23,7 @@ import java.util.List;
 public class RecyclerView_Fav {
     private Context mContext;
     private FavoriteAdapter mFavoriteAdapter;
+    private static final String TAG = "RecyclerViewAdapter";
 
     public void setConfig(RecyclerView recyclerView,Context context, List<Favorites> favorites,List<String> keys) {
         mContext = context;
@@ -29,6 +35,7 @@ public class RecyclerView_Fav {
     class FavItemView extends RecyclerView.ViewHolder{
         private ImageView poster;
         private TextView title;
+        RelativeLayout parentLayout;
 
         private String key;
 
@@ -37,11 +44,27 @@ public class RecyclerView_Fav {
 
             title = (TextView) itemView.findViewById(R.id.image_name);
             poster = (ImageView) itemView.findViewById(R.id.image);
+            parentLayout = itemView.findViewById(R.id.parent_layout);
+
+            parentLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent movie_intent = new Intent(mContext, MovieActivity.class);
+                    movie_intent.putExtra("Title",title.getText().toString());
+                    movie_intent.putExtra("Status",1);
+                    Toast.makeText(mContext, key,
+                            Toast.LENGTH_SHORT).show();
+                    movie_intent.putExtra("Key",key);
+                    mContext.startActivity(movie_intent);
+                }
+            });
 
         }
-        public void bind(Favorites favorites, String key){
+        public void bind(final Favorites favorites, final String key){
             title.setText(favorites.getTitle());
             Glide.with(mContext).load(favorites.getPoster()).diskCacheStrategy(DiskCacheStrategy.ALL).into(poster);
+            Toast.makeText(mContext, key,
+                    Toast.LENGTH_SHORT).show();
             this.key = key;
 
         }

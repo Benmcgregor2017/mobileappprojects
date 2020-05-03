@@ -35,6 +35,8 @@ public class MovieActivity extends Activity {
     Button add_favorite,back;
     String movie_url,user_email;
     private FirebaseAuth mAuth;
+    int status;
+    String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +45,24 @@ public class MovieActivity extends Activity {
 
         Intent movie_intent = getIntent();
         String movie_name = movie_intent.getStringExtra("Title");
+        status = movie_intent.getIntExtra("Status",0);
+
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         user_email = currentUser.getEmail();
+
+
         movie = (TextView)findViewById(R.id.movie);
         info = (TextView)findViewById(R.id.info);
         movie_plot = (TextView)findViewById(R.id.plot);
         movie_poster = (ImageView)findViewById(R.id.poster);
+
         add_favorite = (Button)findViewById(R.id.favorites);
+        if (status == 1){
+            add_favorite.setText("Delete from Favorites");
+            key = movie_intent.getStringExtra("Key");
+        }
+
         back = (Button)findViewById(R.id.back);
 
         movie.setText(movie_name);
@@ -63,34 +75,74 @@ public class MovieActivity extends Activity {
                 favorites.setEmail(user_email);
                 favorites.setTitle(movie.getText().toString());
                 favorites.setPoster(movie_url);
-                new FirebaseDatabaseHelper().addFavorite(favorites, new FirebaseDatabaseHelper.DataStatus() {
-                    @Override
-                    public void DataIsLoaded(List<Favorites> favorites_list, List<String> keys) {
-                        Toast.makeText(MovieActivity.this, "Added to Favorites list",Toast.LENGTH_LONG).show();
-                    }
+                favorites.setEmail_title(user_email+"_"+movie.getText().toString());
+                if (status == 0) {
+                    new FirebaseDatabaseHelper().addFavorite(favorites, new FirebaseDatabaseHelper.DataStatus() {
+                        @Override
+                        public void DataIsLoaded(List<Favorites> favorites_list, List<String> keys) {
+                            Toast.makeText(MovieActivity.this, "Added to Favorites list", Toast.LENGTH_SHORT).show();
 
-                    @Override
-                    public void DataIsInserted() {
+                        }
 
-                    }
+                        @Override
+                        public void DataIsInserted() {
 
-                    @Override
-                    public void DataIsUpdated() {
+                        }
 
-                    }
+                        @Override
+                        public void DataIsUpdated() {
 
-                    @Override
-                    public void DataIsDeleted() {
+                        }
 
-                    }
-                });
+                        @Override
+                        public void DataIsDeleted() {
+
+                        }
+                    });
+                    Toast.makeText(MovieActivity.this, "Added to Favorites list", Toast.LENGTH_SHORT).show();
+                } else if (status == 1) {
+                    new FirebaseDatabaseHelper().deleteFavorite(key, new FirebaseDatabaseHelper.DataStatus() {
+                        @Override
+                        public void DataIsLoaded(List<Favorites> favorites_list, List<String> keys) {
+
+                        }
+
+                        @Override
+                        public void DataIsInserted() {
+
+                        }
+
+                        @Override
+                        public void DataIsUpdated() {
+
+                        }
+
+                        @Override
+                        public void DataIsDeleted() {
+                            Toast.makeText(MovieActivity.this,"Deleted",Toast.LENGTH_LONG).show();
+                            finish(); return;
+                        }
+                    });
+                    Toast.makeText(MovieActivity.this,"Deleted",Toast.LENGTH_LONG).show();
+                    Intent favorite_intent = new Intent(MovieActivity.this, FavoriteActivity.class);
+                    startActivity(favorite_intent);
+
+                }
             }
         });
+
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent home_intent = new Intent(MovieActivity.this, HomeActivity.class);
-                startActivity(home_intent);
+                if (status == 0) {
+                    Intent home_intent = new Intent(MovieActivity.this, HomeActivity.class);
+                    startActivity(home_intent);
+                } else if (status == 1) {
+                    Intent favorite_intent = new Intent(MovieActivity.this, FavoriteActivity.class);
+                    startActivity(favorite_intent);
+                }else{
+                     }
             }
         });
 

@@ -1,5 +1,7 @@
 package com.example.movieapplication;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -58,6 +60,15 @@ public class FirebaseDatabaseHelper {
             @Override
             public void onSuccess(Void aVoid) {
                 dataStatus.DataIsInserted();
+            }
+        });
+    }
+
+    public void deleteFavorite(String key, final DataStatus dataStatus){
+        mReferenceFavorites.child("Favorites").child(key).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dataStatus.DataIsDeleted();
             }
         });
     }

@@ -733,8 +733,8 @@ drawable tooltip_frame_light
 id ALT
 id CTRL
 id FUNCTION
-id LoginButton
 id META
+id RegisterTitle
 id SHIFT
 id SYM
 id SearchBar
@@ -798,11 +798,13 @@ id always
 id async
 id auto
 id back
+id back_button
 id barrier
 id beginning
 id blocking
 id bottom
 id buttonPanel
+id cancel
 id center_vertical
 id chains
 id checkbox
@@ -823,7 +825,6 @@ id direct
 id disableHome
 id edit_query
 id email
-id email_main
 id end
 id expand_activities_button
 id expanded_menu
@@ -869,7 +870,6 @@ id parent
 id parentPanel
 id parent_layout
 id password
-id password_main
 id percent
 id plot
 id poster
@@ -877,7 +877,6 @@ id progress_circular
 id progress_horizontal
 id radio
 id recyclerv_view_fav
-id register
 id right
 id right_icon
 id right_side
@@ -925,7 +924,7 @@ id text
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
-id textView
+id textView2
 id textView3
 id time
 id title

@@ -38,11 +38,11 @@ public class MainActivity extends Activity  {
 // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        b1 = (Button)findViewById(R.id.LoginButton);
-        email_main = (EditText)findViewById(R.id.email_main);
-        password_main = (EditText)findViewById(R.id.password_main);
+        b1 = (Button)findViewById(R.id.create_acc);
+        email_main = (EditText)findViewById(R.id.email);
+        password_main = (EditText)findViewById(R.id.password);
 
-        b2 = (Button)findViewById(R.id.register);
+        b2 = (Button)findViewById(R.id.cancel);
         tx1 = (TextView)findViewById(R.id.textView3);
         tx1.setVisibility(View.GONE);
 
