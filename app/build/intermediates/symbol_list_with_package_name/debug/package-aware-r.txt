@@ -804,7 +804,6 @@ id beginning
 id blocking
 id bottom
 id buttonPanel
-id cancel
 id center_vertical
 id chains
 id checkbox
@@ -813,7 +812,6 @@ id chronometer
 id collapseActionView
 id content
 id contentPanel
-id create_acc
 id custom
 id customPanel
 id dark
@@ -852,6 +850,7 @@ id line1
 id line3
 id listMode
 id list_item
+id login
 id logout
 id message
 id middle
@@ -877,6 +876,7 @@ id progress_circular
 id progress_horizontal
 id radio
 id recyclerv_view_fav
+id register
 id right
 id right_icon
 id right_side
@@ -925,7 +925,6 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textView2
-id textView3
 id time
 id title
 id titleDividerNoCustom
